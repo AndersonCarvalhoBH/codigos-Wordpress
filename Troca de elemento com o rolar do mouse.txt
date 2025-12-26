@@ -1,0 +1,39 @@
+<style>
+    
+    .sumir{
+     opacity: 0;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+
+
+    }
+    .hidden {
+      opacity: 0;
+      pointer-events: none;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+
+    }
+  </style>
+
+
+  <script>
+    // Referências aos elementos
+    const elementToShow = document.getElementById('elementToShow');
+    const elementToHide = document.getElementById('elementToHide');
+
+    // Função para monitorar o scroll
+    window.addEventListener('scroll', () => {
+      const scrollPosition = window.scrollY; // Posição atual do scroll
+      
+    
+
+      if (scrollPosition > 100) { // Quando a página for rolada mais de 100px
+        elementToShow.classList.remove('hidden'); // Exibe o elemento
+        elementToShow.classList.remove('sumir'); // Exibe o elemento
+
+        elementToHide.classList.add('hidden'); // Oculta o elemento
+      } else {
+        elementToShow.classList.add('hidden'); // Oculta o elemento
+        elementToHide.classList.remove('hidden'); // Exibe o elemento
+      }
+    });
+  </script>
