@@ -1,0 +1,33 @@
+$(function(){
+	exibirCadastro();
+
+	$("#formularioCheckout > div > div:nth-child(1) > div > fieldset > legend > a").each(function(){
+		$(this).html($(this).html().replace('identifique-se','Acessar conta'));
+	});
+
+	$("#formularioCheckout .control-group.required .controls input#id_email").focus();
+	
+	$("#formularioCheckout .control-group.required .controls input#id_email").focusout(function() {
+		if (validateEmail(this.value)) {
+			var url = "/conta/verificar_email?email=" + this.value;
+			var self = $(this);
+			$.ajax({
+			  url: url,
+			}).done(function(data) {
+				data = JSON.parse(data);
+				if (data.situacao === "ERRO"){
+					//self.parent().parent(".required").addClass("erro error");
+					//self.next(".help-block").html("Você já tem cadastro! <a onclick=\"javascript:{exibirLogin(); $('.identificacao, .checkout-alerta-seguro').slideDown();}\">Click Aqui</a>").slideDown();]
+                    exibirLogin();
+                    $('.identificacao, .checkout-alerta-seguro').slideDown();
+                    $('#id_email_login').val($('#id_email').val());
+				}
+			});			
+		}
+	});
+	
+	setTimeout(function(){
+	    $("#formularioCheckout .control-group.required .controls input#id_email").focus();
+	}, 1000);
+	//f5a81046397d9e7479b02976a743039c
+ });

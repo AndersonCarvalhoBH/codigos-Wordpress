@@ -1,0 +1,31 @@
+selector{
+    transition: 0.5s;
+}
+
+/* altera a cor do fundo do menu */
+selector.elementor-sticky--effects{
+    background: #red;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    min-height:40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+/* altera a logo do menu */
+selector.elementor-sticky--effects .logo{
+    transition: 0.5s !important;
+    width: 150px !important;
+    
+}
+
+/* altera o botao */
+selector.elementor-sticky--effects .elementor-button {
+    background-color: black;
+    color:#fff;
+    transition: 0.5s;
+}
+
+
+

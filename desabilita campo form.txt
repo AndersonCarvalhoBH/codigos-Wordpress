@@ -1,0 +1,17 @@
+var input = document.querySelector("#form-field-fantasia");
+input.disabled = true;
+
+var input = document.querySelector("#form-field-nome");
+input.disabled = true;
+
+var input = document.querySelector("#form-field-rua");
+input.disabled = true;
+
+var input = document.querySelector("#form-field-cidade");
+input.disabled = true;
+
+var input = document.querySelector("#form-field-uf");
+input.readonly = true;
+
+var input = document.querySelector("#form-field-bairro");
+input.readonly = true;

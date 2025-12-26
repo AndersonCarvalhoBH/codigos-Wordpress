@@ -1,0 +1,78 @@
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script type="text/javascript" >
+
+jQuery(document).ready(function( $ ) {
+function limpa_formulario_cep() {
+
+$("#form-field-endereco").val("");
+$("#form-field-cidade").val("");
+$("#form-field-estado").val("");
+}
+
+$("#form-field-cep").blur(function() {
+
+var cep = $(this).val().replace(/\D/g, '');
+
+if (cep != "") {
+
+var validacep = /^[0-9]{8}$/;
+
+if(validacep.test(cep)) {
+
+$("#form-field-endereco").val("...");
+$("#form-field-cidade").val("...");
+$("#form-field-estado").val("...");
+
+$.getJSON("//viacep.com.br/ws/"+ cep +"/json/?callback=?", function(dados) {
+
+if (!("erro" in dados)) {
+
+$("#form-field-endereco").val(dados.logradouro);
+$("#form-field-cidade").val(dados.localidade);
+$("#form-field-estado").val(dados.uf);
+}
+else {
+
+limpa_formulario_cep();
+alert("CEP não encontrado.");
+}
+});
+}
+else {
+
+limpa_formulario_cep();
+alert("Formato de CEP inválido.");
+}
+}
+else {
+
+limpa_formulario_cep();
+}
+});
+$("#form-field-celular").mask("(99) 99999-9999");
+$("#form-field-rg").mask("00.000.000-0");
+$("#form-field-cpf").mask("000.000.000-00");
+$("#form-field-cep").mask("00000-000");
+$("#form-field-cnpj").mask("00.000.000/0000-00");
+
+var input = document.querySelector("#form-field-fantasia");
+input.disabled = true;
+
+var input = document.querySelector("#form-field-nome");
+input.disabled = true;
+
+var input = document.querySelector("#form-field-rua");
+input.disabled = true;
+
+var input = document.querySelector("#form-field-cidade");
+input.disabled = true;
+
+var input = document.querySelector("#form-field-uf");
+input.disabled = true;
+
+var input = document.querySelector("#form-field-bairro");
+input.disabled = true;
+
+
+});
+</script
